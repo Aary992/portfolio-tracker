@@ -10,6 +10,14 @@ const PURCHASE_DATE = '2025-12-01';
 // Cash on hand (post-exits) waiting to be deployed.
 const CASH = 16000;
 
+// Recently closed positions — manually maintained log of exits.
+const RECENT_EXITS = [
+  { name: 'ADANIPOWER', qty: 24, avgBuy: 148.27, exitPrice: 211.80, date: '2026-04-24', sector: 'Power' },
+  { name: 'MOSCHIP',    qty: 14, avgBuy: 199.31, exitPrice: 195.50, date: '2026-04-24', sector: 'Tech' },
+  { name: 'RVNL',       qty: 6,  avgBuy: 360.85, exitPrice: 302.75, date: '2026-04-24', sector: 'Infrastructure' },
+  { name: 'SAIL',       qty: 10, avgBuy: 148.00, exitPrice: 176.70, date: '2026-04-24', sector: 'Metals' },
+];
+
 const HOLDINGS = [
   { name: 'EMMVEE',     symbol: 'EMMVEE.NS',      qty: 22,  avg: 194.70, invested: 4283.40, sector: 'Solar' },
   { name: 'NATIONALUM', symbol: 'NATIONALUM.NS',  qty: 19,  avg: 334.63, invested: 6358.00, sector: 'Metals' },
