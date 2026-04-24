@@ -438,6 +438,64 @@ export default function Portfolio() {
           </div>
         )}
 
+        {/* Recent Exits */}
+        {RECENT_EXITS.length > 0 && (
+          <div style={{ padding: '12px 24px 0' }}>
+            <Card style={{ padding: '20px 24px' }}>
+              <SectionLabel sub={`${RECENT_EXITS.length} positions closed · proceeds added to cash`}>
+                Recent Exits
+              </SectionLabel>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: 'left',  padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>STOCK</th>
+                    <th style={{ textAlign: 'right', padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>QTY</th>
+                    <th style={{ textAlign: 'right', padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>AVG BUY</th>
+                    <th style={{ textAlign: 'right', padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>EXIT</th>
+                    <th style={{ textAlign: 'right', padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>REALIZED P&L</th>
+                    <th style={{ textAlign: 'right', padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>RETURN</th>
+                    <th style={{ textAlign: 'right', padding: '8px 10px', color: C.muted, fontSize: 10, letterSpacing: 1, borderBottom: `1px solid ${C.border}` }}>DATE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {RECENT_EXITS.map(e => {
+                    const pnl  = (e.exitPrice - e.avgBuy) * e.qty;
+                    const pct  = ((e.exitPrice / e.avgBuy) - 1) * 100;
+                    const col  = pnl >= 0 ? C.green : C.red;
+                    return (
+                      <tr key={e.name + e.date}>
+                        <td style={{ padding: '10px', color: C.text, borderBottom: `1px solid ${C.border}` }}>
+                          {e.name} <span style={{ color: C.muted, fontSize: 10 }}>· {e.sector}</span>
+                        </td>
+                        <td style={{ padding: '10px', textAlign: 'right', color: C.text2, borderBottom: `1px solid ${C.border}` }}>{e.qty}</td>
+                        <td style={{ padding: '10px', textAlign: 'right', color: C.text2, borderBottom: `1px solid ${C.border}` }}>Rs.{fmt(e.avgBuy)}</td>
+                        <td style={{ padding: '10px', textAlign: 'right', color: C.text,  borderBottom: `1px solid ${C.border}` }}>Rs.{fmt(e.exitPrice)}</td>
+                        <td style={{ padding: '10px', textAlign: 'right', color: col, fontWeight: 500, borderBottom: `1px solid ${C.border}` }}>{pnl >= 0 ? '+' : '-'}Rs.{fmt(Math.abs(pnl))}</td>
+                        <td style={{ padding: '10px', textAlign: 'right', color: col, borderBottom: `1px solid ${C.border}` }}>{fmtPct(pct)}</td>
+                        <td style={{ padding: '10px', textAlign: 'right', color: C.muted, fontSize: 11, borderBottom: `1px solid ${C.border}` }}>{e.date}</td>
+                      </tr>
+                    );
+                  })}
+                  {(() => {
+                    const totPnl = RECENT_EXITS.reduce((s, e) => s + (e.exitPrice - e.avgBuy) * e.qty, 0);
+                    const totInv = RECENT_EXITS.reduce((s, e) => s + e.avgBuy * e.qty, 0);
+                    const totPct = (totPnl / totInv) * 100;
+                    const col = totPnl >= 0 ? C.green : C.red;
+                    return (
+                      <tr>
+                        <td colSpan={4} style={{ padding: '12px 10px', color: C.text2, fontWeight: 500 }}>TOTAL REALIZED</td>
+                        <td style={{ padding: '12px 10px', textAlign: 'right', color: col, fontWeight: 600 }}>{totPnl >= 0 ? '+' : '-'}Rs.{fmt(Math.abs(totPnl))}</td>
+                        <td style={{ padding: '12px 10px', textAlign: 'right', color: col, fontWeight: 600 }}>{fmtPct(totPct)}</td>
+                        <td />
+                      </tr>
+                    );
+                  })()}
+                </tbody>
+              </table>
+            </Card>
+          </div>
+        )}
+
         {/* ── RISK & ANALYTICS ── */}
         <div style={{ padding: '12px 24px 0' }}>
           <Card style={{ padding: '20px 24px' }}>
