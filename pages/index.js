@@ -409,6 +409,7 @@ export default function Portfolio() {
           <SummaryCard label="Invested"         value={`Rs.${fmt(totalInvested)}`}                                        sub={`since ${PURCHASE_DATE}`} color={C.text} />
           <SummaryCard label="CAGR (annualized)" value={fmtPct(actualCagr)}                                               sub={`${daysHeld}d held`}    color={actualCagr >= 0 ? C.green : C.red} />
           <SummaryCard label="Winners / Losers" value={`${winners} / ${losers}`}                                          sub={`${winRate}% win rate`} color={C.cyan} />
+          <SummaryCard label="Cash to Deploy"   value={`Rs.${fmt(CASH)}`}                                                 sub="awaiting allocation"   color={C.amber} />
         </div>
 
         {/* Best / Worst */}
