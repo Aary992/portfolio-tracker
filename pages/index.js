@@ -7,9 +7,11 @@ import {
 
 const PURCHASE_DATE = '2025-12-01';
 
+// Cash on hand (post-exits) waiting to be deployed.
+const CASH = 16000;
+
 const HOLDINGS = [
   { name: 'EMMVEE',     symbol: 'EMMVEE.NS',      qty: 22,  avg: 194.70, invested: 4283.40, sector: 'Solar' },
-  { name: 'ADANIPOWER', symbol: 'ADANIPOWER.NS',  qty: 24,  avg: 148.27, invested: 3558.64, sector: 'Power' },
   { name: 'NATIONALUM', symbol: 'NATIONALUM.NS',  qty: 19,  avg: 334.63, invested: 6358.00, sector: 'Metals' },
   { name: 'CGPOWER',    symbol: 'CGPOWER.NS',     qty: 4,   avg: 589.90, invested: 2359.60, sector: 'Capital Goods' },
   { name: 'TATAPOWER',  symbol: 'TATAPOWER.NS',   qty: 10,  avg: 356.78, invested: 3567.80, sector: 'Power' },
@@ -21,10 +23,7 @@ const HOLDINGS = [
   { name: 'GROWW',      symbol: 'GROWW.NS',       qty: 10,  avg: 177.90, invested: 1779.00, sector: 'Fintech' },
   { name: 'IDEA',       symbol: 'IDEA.NS',        qty: 244, avg:  11.83, invested: 2886.90, sector: 'Telecom' },
   { name: 'ITC',        symbol: 'ITC.NS',         qty: 12,  avg: 325.12, invested: 3901.50, sector: 'FMCG' },
-  { name: 'MOSCHIP',    symbol: 'MOSCHIP.NS',     qty: 14,  avg: 199.31, invested: 2790.40, sector: 'Tech' },
   { name: 'ONGC',       symbol: 'ONGC.NS',        qty: 13,  avg: 251.80, invested: 3273.42, sector: 'Oil & Gas' },
-  { name: 'RVNL',       symbol: 'RVNL.NS',        qty: 6,   avg: 360.85, invested: 2165.10, sector: 'Infrastructure' },
-  { name: 'SAIL',       symbol: 'SAIL.NS',        qty: 10,  avg: 148.00, invested: 1480.09, sector: 'Metals' },
   { name: 'SUZLON',     symbol: 'SUZLON.NS',      qty: 10,  avg:  65.87, invested:  658.70, sector: 'Solar' },
   { name: 'VIKRAMSOLR', symbol: 'VIKRAMSOLR.NS',  qty: 8,   avg: 203.92, invested: 1631.40, sector: 'Solar' },
 ];
