@@ -7,11 +7,13 @@ import {
 
 const PURCHASE_DATE = '2025-12-01';
 
-// Cash on hand (post-exits) waiting to be deployed.
-const CASH = 16000;
+// Cash on hand (available margin) waiting to be deployed.
+const CASH = 19854.25;
 
 // Recently closed positions — manually maintained log of exits.
 const RECENT_EXITS = [
+  { name: 'ONGC',       qty: 13, avgBuy: 251.80, exitPrice: 298.90, date: '2026-04-25', sector: 'Oil & Gas' },
+  { name: 'BHEL',       qty: 8,  avgBuy: 280.92, exitPrice: 400.25, date: '2026-04-25', sector: 'Capital Goods' },
   { name: 'ADANIPOWER', qty: 24, avgBuy: 148.27, exitPrice: 211.80, date: '2026-04-24', sector: 'Power' },
   { name: 'MOSCHIP',    qty: 14, avgBuy: 199.31, exitPrice: 195.50, date: '2026-04-24', sector: 'Tech' },
   { name: 'RVNL',       qty: 6,  avgBuy: 360.85, exitPrice: 302.75, date: '2026-04-24', sector: 'Infrastructure' },
